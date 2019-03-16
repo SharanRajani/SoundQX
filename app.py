@@ -7,7 +7,6 @@ def home():
 		f = request.files['file']
 		# f.save(secure_filename(f.filename))
 		print(f)
-		return 'file uploaded successfully'
 	return render_template('one.html')
 
 if __name__ == '__main__':
