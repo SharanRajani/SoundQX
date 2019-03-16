@@ -2,12 +2,9 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<script src="https://unpkg.com/wavesurfer.js"></script>
 <style>
 *{margin: 0;padding: 0}
-/*body {
-	background-color: #0B353B;
-}*/
 
 .material-icons.md-48 { font-size: 84px;color:white ; }
 
@@ -69,49 +66,21 @@ path {
 <!-- <i class="material-icons">add_circle_outline</i>-->
 <!-- <i class="material-icons md-18">face</i>-->
 
-<script >
-let xs = []
-for (var i = 0; i <= 2500; i++) {
-	xs.push(i)
-}
-
-let t = 0
-
-
-function animate() {
-
-	// if(t%1000<50){
-	let points = xs.map(x => {
+<script type="text/javascript">
+	var wavesurfer = WaveSurfer.create({
+    container: '#bloc2',
+    waveColor: '#548194',
+    progressColor: '#B279C0',
+    // barGap:1,
+    // barHeight:2
+});
 
 
+wavesurfer.load('{{ url_for('static', filename = 'wav/no_tree_ent.wav') }}' );
 
-		let y = 200 + 30 * Math.sin((x + t) / 9)
-			return [x, y]
-		})
-	// }
-	// else{
-		// let points = xs.map(x => {
-
-
-
-			// let y = 200 + 30 * Math.sin((x + t) / 9)
-				// return [x, y]
-			// })
-	// }
-
-	let path = "M" + points.map(p => {
-		return p[0] + "," + p[1]
-	}).join(" L")
-
-	document.querySelector("path").setAttribute("d", path)
-
-	t += 2
-
-	requestAnimationFrame(animate)
-}
-
-
-animate()
+wavesurfer.on('ready', function () {
+    wavesurfer.play();
+});	
 </script>
 
 </body>
