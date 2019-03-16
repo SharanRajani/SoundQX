@@ -2,7 +2,8 @@
 <html>
 <head>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 <style>
 *{margin: 0;padding: 0}
 /*body {
@@ -63,7 +64,7 @@ path {
 <!-- <i class="material-icons">add_circle_outline</i>-->
 <!-- <i class="material-icons md-18">face</i>-->
 
-<script >
+<!-- <script >
 let xs = []
 for (var i = 0; i <= 2500; i++) {
   xs.push(i)
@@ -106,7 +107,16 @@ function animate() {
 
 
 animate()
-</script>
+</script> -->
+<script src="https://unpkg.com/wavesurfer.js"></script>
+<script type="text/javascript">
+	var wavesurfer = WaveSurfer.create({
+    container: '#bloc2',
+    waveColor: 'white',
+    progressColor: 'red'
+});
 
+wavesurfer.load('/home/thegodfather/Desktop/Stuff/fft/no_tree_ent.wav');
+</script>
 </body>
 </html>

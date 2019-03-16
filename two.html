@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+<div id="waveform"></div>
+<script type="text/javascript">
+	var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple'
+});
+
+wavesurfer.load('http://0.0.0.0:8000/no_tree_ent.wav');
+
+wavesurfer.on('ready', function () {
+    wavesurfer.play();
+});	
+</script>
+</body>
+</html>
