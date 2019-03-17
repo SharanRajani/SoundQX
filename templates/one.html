@@ -11,6 +11,8 @@
 <div class="bloc" id="bloc12"><span id="projecttitle">Sound<span id="qx" style="color: #B279C0">QX</span></span></div>
 
   <label >
+    <form method = "POST" enctype = "multipart/form-data">
+
 <input  type=file name=file style="margin:50px 0px 0px 0px;display: none;" >
 
 <span class="buttons" style="cursor: pointer; position: absolute; top: 50%; left: 42%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " >Add File</span>
@@ -21,6 +23,8 @@
 <button class="buttons" style="cursor: pointer; position: absolute; top: 50%; left: 52%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh; text-align:center; width:14vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value=Upload>Denoise</button>
 <!-- <span style="position: absolute; top: 50%; left: 35%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " >Add File</span> -->
 </label>
+
+<form method = "POST" enctype = "multipart/form-data">
 
 
 	<!-- <div class="bloc" id="bloc1"> -->
@@ -50,7 +54,7 @@
 });
 
 
-wavesurfer.load('{{ url_for('static', filename = 'wav/no_tree_ent.wav') }}' );
+wavesurfer.load('{{ url_for('static', filename = wav_file) }}' );
 
 wavesurfer.on('ready', function () {
     wavesurfer.play();
