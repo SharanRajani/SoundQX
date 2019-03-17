@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+<style type="text/css">
+
+.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:-5px;overflow:hidden}.slider }
+
+.material-icons.md-48 { font-size: 84px;color:white ; }
+
+#main{
+		position:fixed;
+		padding:0;
+		margin:0;
+
+		top:0;
+		left:0;
+
+		width: 100%;
+		height: 100%;
+	background-color: #0B353B;
+}
+
+#bloc1{
+
+ margin:0 0 0 30%;
+ width: 80vh;
+}
+
+.heading{
+  display: block;
+  color: white;
+}
+
+
+.footer{
+  position: absolute;
+	bottom: 3vh;
+	left: 25vh;
+	width: 95%;
+}
+
+</style>
+</head>
+<body>
+<div id="main">
+<center><div  style="color: white; margin-bottom: 12vh; margin-top: 3vh;font-size: 5vh"> Generated Spectograms </div></center>
+
+    <div class="slider bloc" id="bloc1">
+
+     <div class="slider responsive">
+
+      <div class="left image">
+
+        <img style="height:40vh" src="{{ url_for('static', filename = 'images/noisy.png') }}"/>
+
+      </div>
+
+      <div class="right image" style="height:10vh">
+
+        <img style="height:40vh" src="{{ url_for('static', filename = 'images/clean.png') }}"/>
+
+      </div>
+
+
+    </div>
+    <div style="font-size: 2vh; color:white">
+      <span >Noise</span> <span style="margin-left:31%">Click and drag to compare</span> <span  style="margin-left:29%">Clean<span>
+    </div>
+	</div>
+
+
+	<div class="footer" id="bloc2">
+	</div>
+</div>
+<!-- <i class="material-icons">add_circle_outline</i>-->
+<!-- <i class="material-icons md-18">face</i>-->
+
+<script type="text/javascript">
+	var wavesurfer = WaveSurfer.create({
+    container: '#bloc2',
+    waveColor: '#548194',
+    progressColor: '#B279C0',
+    // barGap:1,
+    // barHeight:2
+});
+
+
+
+wavesurfer.load('{{ url_for('static', filename = 'wav/no_tree_ent.wav') }}' );
+
+wavesurfer.on('ready', function () {
+    wavesurfer.play();
+});
+
+!function(i){"use strict"
+i.fn.slider=function(t){var n=i.extend(i.fn.slider.defaultOptions,t),e=function(){var t=i(this),e=t.width()
+if(t.find(".image img").css("width",e+"px"),t.find(".left.image").css("width",Math.floor(e*n.initialPosition)),n.showInstruction){var s=null
+s=i("div.instruction"),0===s.length&&(s=i("<div></div>").addClass("instruction").append("<p></p>"),t.append(s)),s.children("p").text(n.instructionText),s.css("left",100*(n.initialPosition-s.children("p").width()/(2*e))+"%")}},s=function(t){t.preventDefault(),i(t.currentTarget).children(".instruction").hide()
+var n
+n=t.type.startsWith("touch")?t.originalEvent.touches[0].clientX-t.originalEvent.layerX:void 0===t.offsetX?t.pageX-t.originalEvent.layerX:t.offsetX,n<=i(this).width()&&i(this).find(".left.image").css("width",n+"px")},o=function(t){t.preventDefault(),i(this).css("cursor","ew-resize").on("mousemove.sliderns",s).on("touchmove.sliderns",s)},r=function(t){t.preventDefault(),i(this).css("cursor","normal").off("mousemove.sliderns").off("touchmove.sliderns")},c=function(){return i(".slider.responsive").each(e)}
+return i(window).on("resize",c),this.each(e).on("click touchstart",s).on("mousedown touchstart",o).on("mouseup touchend",r)},i.fn.slider.defaultOptions={initialPosition:.5,showInstruction:!0,instructionText:""}}(jQuery)
+
+
+$('.slider').slider();
+</script>
+
+</body>
+</html>

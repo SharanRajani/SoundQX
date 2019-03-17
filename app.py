@@ -11,5 +11,9 @@ def home():
 		print(f)
 	return render_template('one.html')
 
+@app.route('/flash_spec')
+def display_spec():
+	return render_template('two.html')
+
 if __name__ == '__main__':
 	app.run(debug=True)
