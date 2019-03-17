@@ -324,6 +324,10 @@ path {
 	<div class="bloc" id="bloc1">
 		<form method = "POST" enctype = "multipart/form-data">
 			<input type = "file" name = "file" />
+      <!-- <label class="btn btn-default btn-sm center-block btn-file">
+        <i class="material-icons md-48" aria-hidden="true">add_circle_outline</i>
+        <input type="file" style="display: none;">
+      </label> -->
 			<input type = "submit"/>
 			<!-- Sharan's material design button |down -->
 			<!-- <i class="material-icons md-48">add_circle</i> -->
@@ -346,7 +350,7 @@ path {
 });
 
 
-wavesurfer.load('{{ url_for('static', filename = 'wav/no_tree_ent.wav') }}' );
+wavesurfer.load('{{ url_for('static', filename = wav_file) }}' );
 
 wavesurfer.on('ready', function () {
     wavesurfer.play();
