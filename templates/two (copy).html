@@ -1,14 +1,55 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://unpkg.com/wavesurfer.js"></script>
+
+<style type="text/css">
+
+.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:-5px;overflow:hidden}.slider }
+
+.material-icons.md-48 { font-size: 84px;color:white ; }
+
+#main{
+		position:fixed;
+		padding:0;
+		margin:0;
+
+		top:0;
+		left:0;
+
+		width: 100%;
+		height: 100%;
+	background-color: #0B353B;
+}
+
+#bloc1{
+
+ margin:0 0 0 30%;
+ width: 80vh;
+}
+
+.heading{
+  display: block;
+  color: white;
+}
 
 
-<!-- <div> -->
+.footer{
+  position: absolute;
+	bottom: 3vh;
+	left: 25vh;
+	width: 95%;
+}
 
+</style>
+</head>
+<body>
+<div id="main">
+<center><div  style="color: white; margin-bottom: 12vh; margin-top: 3vh;font-size: 5vh"> Generated Spectograms </div></center>
 
-
-    <div class="slider bloc" id="blocSpec1">
-			<center><div  style="color: white; margin-bottom: 6vh; margin-top: 16vh;font-size: 5vh"> Generated Spectograms </div></center>
-
+    <div class="slider bloc" id="bloc1">
 
      <div class="slider responsive">
 
@@ -27,13 +68,14 @@
 
     </div>
     <div style="font-size: 2vh; color:white">
-      <span >Noise</span> <span style="margin-left:27%">Click and drag to compare</span> <span  style="margin-left:29%">Clean<span>
+      <span >Noise</span> <span style="margin-left:31%">Click and drag to compare</span> <span  style="margin-left:29%">Clean<span>
     </div>
 	</div>
 
 
-	<div class="bloc footer" id="bloc2">
-	<!-- </div> -->
+	<div class="footer" id="bloc2">
+	</div>
+</div>
 <!-- <i class="material-icons">add_circle_outline</i>-->
 <!-- <i class="material-icons md-18">face</i>-->
 
@@ -64,9 +106,7 @@ return i(window).on("resize",c),this.each(e).on("click touchstart",s).on("moused
 
 
 $('.slider').slider();
-
-
 </script>
 
-
-{% endblock content %}
+</body>
+</html>

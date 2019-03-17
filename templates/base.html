@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+
+<head>
+    <title>SoundQX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <style>
+    .slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:-5px;overflow:hidden}.slider }
+
+    .material-icons.md-48 { font-size: 84px;color:white ; }
+
+    #main{
+    		position:fixed;
+    		padding:0;
+    		margin:0;
+
+    		top:0;
+    		left:0;
+
+    		width: 100%;
+    		height: 100%;
+    	background-color: #0B353B;
+    }
+    .bloc{
+    	position: absolute;
+    }
+    #bloc1{
+    	top: 82.1%;
+    	right:80%;
+    }
+
+    #bloc11{
+    	top: 5%;
+    	width: 100%;
+    	padding-bottom: 20vh;
+    }
+
+    #bloc12{
+      top:30%;
+      right:36%;
+    }
+
+    #projecttitle{
+      font-family: 'Raleway', sans-serif;
+      color: white;
+      font-size: 12vh;
+    }
+
+    #bloc2{
+    	bottom: 10%;
+    }
+
+    #blocSpec1{
+
+     margin:0 0 0 30%;
+     width: 80vh;
+    }
+
+    .footer{
+    	bottom: 0vh;
+    	left: 25vh;
+    	width: 100%;
+    }
+
+    </style>
+</head>
+<body>
+
+        {% include 'stepper.html' %}
+
+    <div class="container" id="maincontent">
+
+        <div id="body_content">
+            {% block content %}{# main content area #}{% endblock %}
+        </div>
+    </div><!-- /container -->
+    <!-- <footer>
+        <div id="footer" class="container">
+            {% block footer %}{% endblock %}
+        </div>
+    </footer> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/{{ jquery_version }}/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/{{ bootstrap_version }}/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
+    {% block tail_script %}{# defer-capable JS block #}{% endblock %}
+    {{ profiler_includes|safe }}
+</body>
+</html>
