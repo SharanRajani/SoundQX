@@ -11,7 +11,7 @@ def home():
 		print(f.filename)
 		f.save('./static/wav/'+secure_filename(f.filename))
 		f = 'wav/'+f.filename
-	return render_template('one.html', wav_file = f)
+	return render_template('First.html', wav_file = f)
 
 @app.route('/flash_spec')
 def display_spec():
