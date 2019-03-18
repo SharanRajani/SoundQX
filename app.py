@@ -9,7 +9,7 @@ app.secret_key = "my precious"
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
-	f = 'wav/no_tree_ent.wav'
+	f = 'wav/landing_page.wav'
 	if request.method == 'POST':
 		f = request.files['file']
 		print(f.filename)

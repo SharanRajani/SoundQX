@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
 <script src="https://unpkg.com/wavesurfer.js"></script>
@@ -178,11 +179,6 @@
   flex-basis: 0;
 }
 
-.buttons:hover{
-    /*size: 3vh;*/
-    color: #B279C0
-}
-
 body {
   font-family: sans-serif;
   margin: 0;
@@ -230,7 +226,6 @@ article p {
 }
 .container__item {
   padding: 0 0 1.2vh 0vh;
-  border-bottom: 0.3vh solid rgba(255, 255, 255, 0.15);
 }
 .container__item h2 {
   padding: calc(var(--s-gutter) / 2) var(--s-gutter) var(--s-gutter);
@@ -254,35 +249,29 @@ article p {
 
 		width: 100%;
 		height: 100%;
-	background-color: #0B353B;
+    /*background-color: #CEE5FF;*/
 }
 .bloc{
 	position: absolute;
 }
-#bloc1{
-	top: 77%;
-	right:91%;
+
+#blocSpec1{
+
+     margin:0 0 0 30%;
+     width: 80vh;
 }
 
 #bloc11{
-	top: 5%;
 	width: 100%;
 	padding-bottom: 20vh;
 }
 
-#bloc12{
-  top:31%;
-  right:36%;
-}
-
-#bloc2{
-	bottom: 10%;
-}
-
-#projecttitle{
-  font-family: 'Raleway', sans-serif;
-  color:white;
-  font-size: 12vh;
+#bloc1{
+  position: absolute;
+  width:75vh;
+  /*height: 150vh;*/
+  right: 3%;
+  top:30%;
 }
 
 svg {
@@ -297,19 +286,24 @@ path {
 	fill: none;
 }
 
+img{
+  height: 50vh;
+}
+
 .footer{
 	bottom: 0vh;
 	left: 25vh;
 	width: 100%;
 }
 
-.buttons:hover { background: #D0C7D4; }
+.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:-5px;overflow:hidden}.slider }
+
 </style>
 </head>
 <body>
 <div id="main">
 	<div class="bloc" id="bloc11">
-	<ul class="container">
+	<ul class="container" style="padding-top:2.5%;padding-bottom: 1%;background-color: #0B353B;">
   <li class="container__item">
     <div class="stepper" data-debug="data-debug">
       <input class="stepper__input" id="stepper-3-0" name="stepper-3" type="radio" checked="checked"/>
@@ -332,64 +326,44 @@ path {
   </li>
 </ul>
 </div>
-<div class="bloc" id="bloc12"><span id="projecttitle">Sound<span style="color:#B279C0">QX</span></span></div>
-<!-- <div class="bloc" id="bloc13"> -->
-<!--     <label >
-  <form method = "POST" enctype = "multipart/form-data">
-<input type=file name=file style="margin:50px 0px 0px 0px;display: none;" >
 
-<span class="buttons" style="cursor: pointer;text-decoration:none;text-align:center;" >Add File</span>
-</form>
-</label> -->
-  <label >
-    <form method = "POST" enctype = "multipart/form-data">
+    <div class="slider bloc" id="bloc1">
 
-<input type=file name=file onchange="this.form.submit()" style="margin:50px 0px 0px 0px;display: none;" >
+     <div class="slider">
 
-<span class="buttons" style="cursor: pointer; position: absolute; top: 49%; left: 41%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " >Add File</span>
-<!-- </form> -->
-</label>
-<!-- </div> -->
-<!-- <div class="bloc" id="bloc14"> -->
-<label >
-<button class="buttons" style="cursor: pointer; position: absolute; top: 49%; left: 53%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh; text-align:center; width:14vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value=Upload>Denoise</button>
-</label>
-<!-- </div> -->
-<!-- </form> -->
-	<div class="bloc" id="bloc1">
-    <!-- <form> -->
-      <label>
-      <i onMouseOver="this.style.color='#D0C7D4'" onclick="play()"  onMouseOut="this.style.color='#ffff'" style="font-size: 10vh; cursor: pointer; color:white;" class="material-icons md-48">play_circle_filled</i>
-    </label>
-    <!-- </form> -->
-	</div>
-	<div class="bloc footer" id="bloc2">
-		<svg><path d=""></path></svg>
-	</div>
+      <div class="left image">
+
+        <img src="/home/thegodfather/Desktop/A2IoT/SoundQX/static/images/clean.png"/>
+
+      </div>
+
+      <div class="right image">
+
+        <img src="/home/thegodfather/Desktop/A2IoT/SoundQX/static/images/noisy.png"/>
+
+      </div>
+
+
+    </div>
+    <div style="font-size: 2vh; color:white">
+      <span >Noise</span> <span style="margin-left:31%">Click and drag to compare</span> <span  style="margin-left:29%">Clean<span>
+    </div>
+  </div>
 </div>
 <!-- <i class="material-icons">add_circle_outline</i>-->
 <!-- <i class="material-icons md-18">face</i>-->
 
 <script type="text/javascript">
-	var wavesurfer = WaveSurfer.create({
-    container: '#bloc2',
-    waveColor: '#548194',
-    progressColor: '#B279C0',
-    // barGap:1,
-    // barHeight:2
-});
+!function(i){"use strict"
+i.fn.slider=function(t){var n=i.extend(i.fn.slider.defaultOptions,t),e=function(){var t=i(this),e=t.width()
+if(t.find(".image img").css("width",e+"px"),t.find(".left.image").css("width",Math.floor(e*n.initialPosition)),n.showInstruction){var s=null
+s=i("div.instruction"),0===s.length&&(s=i("<div></div>").addClass("instruction").append("<p></p>"),t.append(s)),s.children("p").text(n.instructionText),s.css("left",100*(n.initialPosition-s.children("p").width()/(2*e))+"%")}},s=function(t){t.preventDefault(),i(t.currentTarget).children(".instruction").hide()
+var n
+n=t.type.startsWith("touch")?t.originalEvent.touches[0].clientX-t.originalEvent.layerX:void 0===t.offsetX?t.pageX-t.originalEvent.layerX:t.offsetX,n<=i(this).width()&&i(this).find(".left.image").css("width",n+"px")},o=function(t){t.preventDefault(),i(this).css("cursor","ew-resize").on("mousemove.sliderns",s).on("touchmove.sliderns",s)},r=function(t){t.preventDefault(),i(this).css("cursor","normal").off("mousemove.sliderns").off("touchmove.sliderns")},c=function(){return i(".slider.responsive").each(e)}
+return i(window).on("resize",c),this.each(e).on("click touchstart",s).on("mousedown touchstart",o).on("mouseup touchend",r)},i.fn.slider.defaultOptions={initialPosition:.5,showInstruction:!0,instructionText:""}}(jQuery)
 
 
-wavesurfer.load('{{ url_for('static', filename = wav_file) }}' );
-wavesurfer.play();
-
-function play() {
-    wavesurfer.play();
-}
-
-// wavesurfer.on('ready', function () {
-//     wavesurfer.play();
-// });
+$('.slider').slider();
 </script>
 
 </body>
