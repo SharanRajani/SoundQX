@@ -266,7 +266,7 @@ article p {
 }
 
 #bloc12{
-  top:31%;
+  top:30%;
   right:36%;
 }
 
@@ -282,7 +282,7 @@ article p {
 
 svg {
 	width: 100%;
-	height: 300px;
+	height: 100px;
 }
 
 path {
@@ -336,30 +336,39 @@ path {
 <span class="buttons" style="cursor: pointer;text-decoration:none;text-align:center;" >Add File</span>
 </form>
 </label> -->
-  <label >
-    <form method = "POST" enctype = "multipart/form-data">
+
+<label >
+<form action ="/" method = "POST" enctype = "multipart/form-data">
 
 <input type=file name=file onchange="this.form.submit()" style="margin:50px 0px 0px 0px;display: none;" >
 
-<span class="buttons" style="cursor: pointer; position: absolute; top: 49%; left: 40%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " >Add File</span>
-</form>
+<span class="buttons" style="cursor: pointer; position: absolute; top: 49%; left: 38%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value = Upload>Add File</span>
+<!-- </form> -->
 </label>
+<!-- </form> -->
 <!-- </div> -->
 <!-- <div class="bloc" id="bloc14"> -->
-<label >
-<button class="buttons" style="cursor: pointer; position: absolute; top: 49%; left: 52%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh; text-align:center; width:14vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value=Upload>Denoise</button>
-</label>
+
+<!-- <label >
+<button class="buttons" style="cursor: pointer; position: absolute; top: 49%; left: 52%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh; text-align:center; width:14vh; display:inline-block; margin: 2vh; padding: 2vh;  " type = submit value=Upload>Denoise</button>
+</label> -->
+<div>
+<button type="button" onclick="location.href='http://127.0.0.1:5000/display_spec'" style="cursor: pointer; position: absolute; top: 49%; left: 51%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh; text-align:center; width:14vh; display:inline-block; margin: 2vh; padding: 2vh;  ">Denoise</button>
+</div>  
 <!-- </div> -->
 <!-- </form> -->
 	<div class="bloc" id="bloc1">
-    <form>
+    <!-- <form> -->
+      <label>
       <i onMouseOver="this.style.color='#D0C7D4'" onclick="play()"  onMouseOut="this.style.color='#ffff'" style="font-size: 10vh; cursor: pointer; color:white;" class="material-icons md-48">play_circle_filled</i>
-    </form>
+      </label>
+    <!-- </form> -->
 	</div>
+<!-- </form> -->
 	<div class="bloc footer" id="bloc2">
 		<svg><path d=""></path></svg>
 	</div>
-</div>
+<!-- </div> -->
 <!-- <i class="material-icons">add_circle_outline</i>-->
 <!-- <i class="material-icons md-18">face</i>-->
 

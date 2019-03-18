@@ -37,9 +37,7 @@ def recons_spec_phase(Sxx_r, phase):
                      window=scipy.signal.hamming)
     return result
 
-if len(sys.argv) < 3:
-    print("Usage: python test_gen_spec.py model.hdf5 list_noisy")
-    sys.exit(1) 
+
 
 def predict(modelpath, noisylistpath):
 	model=load_model(modelpath) #"weights/DNN_spec_20160425v2.hdf5"
@@ -79,8 +77,7 @@ def predict(modelpath, noisylistpath):
 
 	        recons_y = recons_spec_phase(Sxx, phase)
 	        output = librosa.util.fix_length(recons_y, y.shape[0])
-	        wav.write(os.path.join("test_enhanced",filename),RATE,np.int16(output*32767))
-	        return os.path.join("test_enhanced",filename)
+	        wav.write("static/wav/enhanced.wav",RATE,np.int16(output*32767))
+	        return os.path.join("static","wav","enhanced.wav")
 
-if __name__ == '__main__':
-	predict(sys.argv[1], sys.argv[2])
+
