@@ -285,18 +285,6 @@ article p {
   font-size: 12vh;
 }
 
-svg {
-	width: 100%;
-	height: 100px;
-}
-
-path {
-	stroke: #B279C0;
-	stroke-width: 0.6vh;
-	/*stroke-linecap: round;*/
-	fill: none;
-}
-
 button{
   background-color: white;
   color:black;
@@ -395,7 +383,6 @@ button{
 
 
 wavesurfer.load('{{ url_for('static', filename = wav_file) }}' );
-wavesurfer.play();
 
 function play() {
     wavesurfer.play();
