@@ -44,7 +44,7 @@ def predict(modelpath, noisylistpath):
 	FRAMESIZE = 512
 	OVERLAP = 256
 	FFTSIZE = 512
-	RATE = 48000
+	RATE = 16000
 	FRAMEWIDTH = 2
 	FBIN = FRAMESIZE//2+1
 	# noisylistpath = sys.argv[2]
