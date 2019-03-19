@@ -3,6 +3,9 @@ from werkzeug import secure_filename
 import test_gen_spec
 from flask import session, redirect
 import spec_plot
+import cv2
+from keras.models import load_model
+import numpy as np
 
 
 app = Flask(__name__)
@@ -33,10 +36,25 @@ def display_spec():
 
 	enhancedpath = test_gen_spec.predict(modelpath, mixpath)
 
-	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png")
-	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
+	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectograms.png")
+	spec_plot.plotstft(filepath, "./static/images/original_spectograms.png")
 
 	return render_template('Second.html', wav_file = filepath)
+
+@app.route('/classify')
+def classify():
+	enhancedpng = "./static/images/enhanced_spectogram.png"
+
+	model = load_model("./alex-cnn.h5")
+
+	img = cv2.imread(enhancedpng)
+	img = cv2.resize(img, (224,224))
+	img = np.reshape(img, (1,224,224,3))
+	print(img.shape)
+	pred = model.predict(img)
+
+	return render_template('Third.html', pred = pred)
+
 
 if __name__ == '__main__':
 	app.run(debug=True)
