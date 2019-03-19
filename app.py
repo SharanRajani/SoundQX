@@ -22,9 +22,9 @@ def home():
 		print(f.filename)
 		y,sr=librosa.load('../chunks_test/'+secure_filename(f.filename),sr=48000)
 		print(type(y))
-		y = 10000000* y 
+		y = 10000000 * y 
 		ampedpath = "./static/wav/amped.wav"
-		wav.write(ampedpath,4800,y)
+		wav.write(ampedpath,1600,y)
 		f.save('./static/wav/'+secure_filename(f.filename))
 		f = 'wav/'+f.filename
 		session['filepath'] = './static/' + f
@@ -47,8 +47,7 @@ def display_spec():
 
 	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png")
 	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
-	filepath=filepath[9:]
-	print(filepath)
+
 	return render_template('Second.html', wav_file = filepath)
 
 
