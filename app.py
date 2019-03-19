@@ -3,6 +3,12 @@ from werkzeug import secure_filename
 import test_gen_spec
 from flask import session, redirect
 import spec_plot
+import cv2
+from keras.models import load_model
+import numpy as np
+import scipy.io.wavfile as wav
+import librosa
+
 
 
 app = Flask(__name__)
@@ -10,10 +16,16 @@ app.secret_key = "my precious"
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
+	session['filepath'] = None
 	f = 'wav/landing_page.wav'
 	if request.method == 'POST':
 		f = request.files['file']
 		print(f.filename)
+		y,sr=librosa.load('../chunks_test/'+secure_filename(f.filename),sr=48000)
+		print(type(y))
+		y = 10000000 * y 
+		ampedpath = "./static/wav/amped.wav"
+		wav.write(ampedpath,1600,y)
 		f.save('./static/wav/'+secure_filename(f.filename))
 		f = 'wav/'+f.filename
 		session['filepath'] = './static/' + f
@@ -22,22 +34,38 @@ def home():
 
 @app.route('/display_spec')
 def display_spec():
+	print("here")
 	filepath = session['filepath']
+	print("there")
 	modelpath = "model.hdf5"
 	with open("./static/wav/temp", "w") as file:
-	        file.write(filepath)
+			file.write(filepath)
 
 	file.close()
 
-	mixpath = "./static/wav/temp" 
+	mixpath = "./static/wav/temp"
 
 	enhancedpath = test_gen_spec.predict(modelpath, mixpath)
 
 	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png")
 	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
-	filepath=filepath[9:]
-	print(filepath)
+
 	return render_template('Second.html', wav_file = filepath)
+
+
+@app.route('/classify')
+def classify():
+	model = load_model("./alex-cnn.h5")
+	filename = "./static/images/enhanced_spectogram.png"
+	# filename = "/home/atharva/a2iot/deeplearning/DDAE/spectrograms/spectrograms_test_enhanced/chunk1107.png"
+
+	img = cv2.imread(filename)
+	img = cv2.resize(img, (224,224))
+	img = np.reshape(img, (1,224,224,3))
+	print(img.shape)
+	pred = model.predict(img)
+	print(pred)
+	return render_template('Third.html', pred = pred)
 
 if __name__ == '__main__':
 	app.run(debug=True)
