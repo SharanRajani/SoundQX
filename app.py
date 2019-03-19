@@ -24,7 +24,6 @@ def home():
 
 @app.route('/display_spec')
 def display_spec():
-	print("HIIIIIIIIIIIIIIIII",session['h'])
 	filepath = session['filepath']
 	modelpath = "model.hdf5"
 	with open("./static/wav/temp", "w") as file:
