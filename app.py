@@ -22,14 +22,16 @@ def home():
 
 @app.route('/display_spec')
 def display_spec():
+	print("here")
 	filepath = session['filepath']
+	print("there")
 	modelpath = "model.hdf5"
 	with open("./static/wav/temp", "w") as file:
 	        file.write(filepath)
 
 	file.close()
 
-	mixpath = "./static/wav/temp" 
+	mixpath = "./static/wav/temp"
 
 	enhancedpath = test_gen_spec.predict(modelpath, mixpath)
 
