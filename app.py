@@ -23,18 +23,18 @@ def home():
 @app.route('/display_spec')
 def display_spec():
 	filepath = session['filepath']
-	# modelpath = "model.hdf5"
-	# with open("./static/wav/temp", "w") as file:
-	#         file.write(filepath)
+	modelpath = "model.hdf5"
+	with open("./static/wav/temp", "w") as file:
+	        file.write(filepath)
 
-	# file.close()
+	file.close()
 
-	# mixpath = "./static/wav/temp" 
+	mixpath = "./static/wav/temp" 
 
-	# enhancedpath = test_gen_spec.predict(modelpath, mixpath)
+	enhancedpath = test_gen_spec.predict(modelpath, mixpath)
 
-	# spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png")
-	# spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
+	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png")
+	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
 	filepath=filepath[9:]
 	print(filepath)
 	return render_template('Second.html', wav_file = filepath)
