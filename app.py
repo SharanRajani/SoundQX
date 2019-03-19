@@ -64,7 +64,7 @@ def classify():
 	print(img.shape)
 	pred = model.predict(img)
 	print(pred)
-	return render_template('Second.html', wav_file = filepath)
+	return render_template('Third.html', pred = pred)
 
 if __name__ == '__main__':
 	app.run(debug=True)
