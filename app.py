@@ -16,6 +16,7 @@ app.secret_key = "my precious"
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
+	session['filepath'] = None
 	f = 'wav/landing_page.wav'
 	if request.method == 'POST':
 		f = request.files['file']
@@ -28,20 +29,21 @@ def home():
 		f.save('./static/wav/'+secure_filename(f.filename))
 		f = 'wav/'+f.filename
 		session['filepath'] = './static/' + f
-		return render_template('First.html', wav_file = f)
 	return render_template('First.html', wav_file = f)
 
 
 @app.route('/display_spec')
 def display_spec():
+	print("here")
 	filepath = session['filepath']
+	print("there")
 	modelpath = "model.hdf5"
 	with open("./static/wav/temp", "w") as file:
-	        file.write(filepath)
+			file.write(filepath)
 
 	file.close()
 
-	mixpath = "./static/wav/temp" 
+	mixpath = "./static/wav/temp"
 
 	enhancedpath = test_gen_spec.predict(modelpath, mixpath)
 
