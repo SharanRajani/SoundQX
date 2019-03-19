@@ -24,7 +24,7 @@ def home():
 		print(type(y))
 		y = 10000000* y 
 		ampedpath = "./static/wav/amped.wav"
-		wav.write(ampedpath,48000,y)
+		wav.write(ampedpath,4800,y)
 		f.save('./static/wav/'+secure_filename(f.filename))
 		f = 'wav/'+f.filename
 		session['filepath'] = './static/' + f
@@ -49,6 +49,21 @@ def display_spec():
 	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
 	filepath=filepath[9:]
 	print(filepath)
+	return render_template('Second.html', wav_file = filepath)
+
+
+@app.route('/classify')
+def classify():
+	model = load_model("./alex-cnn.h5")
+	filename = "./static/images/enhanced_spectogram.png"
+	# filename = "/home/atharva/a2iot/deeplearning/DDAE/spectrograms/spectrograms_test_enhanced/chunk1107.png"
+
+	img = cv2.imread(filename)
+	img = cv2.resize(img, (224,224))
+	img = np.reshape(img, (1,224,224,3))
+	print(img.shape)
+	pred = model.predict(img)
+	print(pred)
 	return render_template('Second.html', wav_file = filepath)
 
 if __name__ == '__main__':
