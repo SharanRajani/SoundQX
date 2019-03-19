@@ -310,7 +310,7 @@ img{
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-3-0">Choose file</label>
       </div>
-      <input class="stepper__input" id="stepper-3-1" name="stepper-3" type="radio"/>
+      <input class="stepper__input" id="stepper-3-1" name="stepper-3" type="radio" checked="checked"/>
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-3-1">Spectrogram</label>
       </div>
@@ -320,33 +320,35 @@ img{
       </div>
       <input class="stepper__input" id="stepper-3-3" name="stepper-3" type="radio"/>
       <div class="stepper__step">
-        <label class="stepper__button" for="stepper-3-3">youpi</label>
+        <label class="stepper__button" for="stepper-3-3">Results</label>
       </div>
     </div>
   </li>
 </ul>
 </div>
-
+<div>
+    <button type="button" onclick="location.href='http://127.0.0.1:5000/classify'" style="cursor: pointer; position: absolute; top: 49%; left: 40%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh; text-align:center; width:14vh; display:inline-block; margin: 2vh; padding: 2vh;  ">Denoise</button>
+</div>  
     <div class="slider bloc" id="bloc1">
 
      <div class="slider">
 
       <div class="left image">
 
-        <img src="/home/thegodfather/Desktop/A2IoT/SoundQX/static/images/clean.png"/>
+        <img src= "{{ url_for('static', filename = 'images/original_spectogram.png') }}" /> 
 
       </div>
 
       <div class="right image">
 
-        <img src="/home/thegodfather/Desktop/A2IoT/SoundQX/static/images/noisy.png"/>
+        <img src="{{ url_for('static', filename = 'images/enhanced_spectogram.png') }}"/>
 
       </div>
 
 
     </div>
-    <div style="font-size: 2vh; color:white">
-      <span >Noise</span> <span style="margin-left:31%">Click and drag to compare</span> <span  style="margin-left:29%">Clean<span>
+    <div style="font-size: 2vh; color:black">
+      <span >Original</span> <span style="margin-left:27%">Drag to Compare</span> <span  style="margin-left:29%">Clean<span>
     </div>
   </div>
 </div>
@@ -365,6 +367,10 @@ return i(window).on("resize",c),this.each(e).on("click touchstart",s).on("moused
 
 $('.slider').slider();
 </script>
+
+
+
+
 
 </body>
 </html>

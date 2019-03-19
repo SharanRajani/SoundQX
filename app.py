@@ -36,7 +36,7 @@ def display_spec():
 	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png")
 	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png")
 
-	return render_template('two (copy).html', wav_file = filepath)
+	return render_template('Second.html', wav_file = filepath)
 
 if __name__ == '__main__':
 	app.run(debug=True)
