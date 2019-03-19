@@ -47,7 +47,7 @@ def display_spec():
 
 @app.route('/classify')
 def classify():
-    session['filepath'] =  None
+    #session['filepath'] =  None
     model = load_model("./static/alex-cnn.h5")
     filename = "./static/images/enhanced_spectogram.png"
     # filename = "/home/atharva/a2iot/deeplearning/DDAE/spectrograms/spectrograms_test_enhanced/chunk1107.png"
