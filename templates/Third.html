@@ -409,13 +409,9 @@ img{
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-3-1">Spectrogram</label>
       </div>
-      <input class="stepper__input" id="stepper-3-2" name="stepper-3" type="radio"/>
+      <input class="stepper__input" id="stepper-3-2" name="stepper-3" type="radio" checked = "checked"/>
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-3-2">Classification</label>
-      </div>
-      <input class="stepper__input" id="stepper-3-3" name="stepper-3" type="radio"/>
-      <div class="stepper__step">
-        <label class="stepper__button" for="stepper-3-3">Results</label>
       </div>
     </div>
   </li>
@@ -426,9 +422,10 @@ img{
 
     <div class="modal modal--congratulations">
         <div class="modal-top">
-            <img class="modal-icon u-imgResponsive" src="/home/ray/BEProject/Git/SoundQX/static/images/positive_result.png" alt="Excellent!" />
-            <div class="modal-header">Quality: Excellent!</div>
-            <div class="modal-subheader">Congratulations. The quality of your weld is first-rate. </div>
+            <img class="modal-icon u-imgResponsive" src={{pred_img_path}} />
+
+            <div class="modal-header">Quality: {{pred_label}}</div>
+            <div class="modal-subheader">{{pred_desc}}</div>
         </div>
         <div class="modal-bottom">
 

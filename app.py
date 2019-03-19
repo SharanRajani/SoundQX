@@ -16,27 +16,20 @@ app.secret_key = "my precious"
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
-	f = 'wav/landing_page.wav'
-	if request.method == 'POST':
-		f = request.files['file']
-		print(f.filename)
-		y,sr=librosa.load('../chunks_test/'+secure_filename(f.filename),sr=48000)
-		print(type(y))
-		y = 10000000* y 
-		ampedpath = "./static/wav/amped.wav"
-		wav.write(ampedpath,48000,y)
-		f.save('./static/wav/'+secure_filename(f.filename))
-		f = 'wav/'+f.filename
-		session['filepath'] = './static/' + f
-		return render_template('First.html', wav_file = f)
-	return render_template('First.html', wav_file = f)
+    session['filepath']=None
+    f = 'wav/landing_page.wav'
+    if request.method == 'POST':
+        f = request.files['file']
+        print(f.filename)
+        f.save('./static/wav/'+secure_filename(f.filename))
+        f = 'wav/'+f.filename
+        session['filepath'] = './static/' + f
+    return render_template('First.html', wav_file = f)
 
 
 @app.route('/display_spec')
 def display_spec():
-	print("here")
 	filepath = session['filepath']
-	print("there")
 	modelpath = "model.hdf5"
 	with open("./static/wav/temp", "w") as file:
 	        file.write(filepath)
@@ -52,6 +45,33 @@ def display_spec():
 	filepath=filepath[9:]
 	print(filepath)
 	return render_template('Second.html', wav_file = filepath)
+
+@app.route('/classify')
+def classify():
+    session['filepath'] =  None
+    model = load_model("./static/alex-cnn.h5")
+    filename = "./static/images/enhanced_spectogram.png"
+    # filename = "/home/atharva/a2iot/deeplearning/DDAE/spectrograms/spectrograms_test_enhanced/chunk1107.png"
+    img = cv2.imread(filename)
+    img = cv2.resize(img, (224,224))
+    img = np.reshape(img, (1,224,224,3))
+    print(img.shape)
+    pred = model.predict(img)[0][1]
+    #pred= 0.5
+    print(pred)
+    if(pred>0.75):
+        pred_label = "Excellent!"
+        pred_desc = "Congratuations! The quality of your weld is first-rate."
+        pred_img_path = "./static/images/positive_result.png"
+    elif(pred<0.25):
+        pred_label = "Defective"
+        pred_desc = "The quality of the weld is substandard."
+        pred_img_path = "./static/images/negative_result.png"
+    else:
+        pred_label = "Satisfactory"
+        pred_desc = "There is room for improvement. Please ensure weld quality does not deteriorate any further."
+        pred_img_path = "./static/images/neutral_result.png"
+    return render_template('Third.html', pred_label = pred_label, pred_desc = pred_desc, pred_img_path = pred_img_path)
 
 if __name__ == '__main__':
 	app.run(debug=True)
