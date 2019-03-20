@@ -379,7 +379,7 @@ article p {
 
 #bloc1{
   /*position: absolute;*/
-  width:80vh;
+  width:64vh;
   /*height: 150vh;*/
  /* right: -1%;
   top:30%;*/
@@ -419,16 +419,45 @@ img{
 
 #card{
   position: absolute;
-  right: -4%;
+  right: 2%;
   top: 20%;
   background-color: #0B353B;
-  padding: 10vh;
-  padding-bottom: 20vh;
-  border-radius:2vh;
+  padding: 7vh;
+  padding-top: 20vh;
+  border-radius:1.8vh;
   box-shadow: 1vh 1vh 3vh #0B353B;
 }
 
-.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:-0.9vh;overflow:hidden}.slider }
+.audTitle{
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5vh;
+}
+
+#bloc6{
+  top: 46%;
+  left: 23%;
+}
+
+#bloc7{
+  top: 74%;
+  left: 23%;
+}
+
+#sliderTag{
+  top: 92%;
+  left: 9%;
+}
+
+#sliderTag2{
+  top: 92%;
+  left: 46%;
+}
+
+#sliderTag3{
+  top: 92%;
+  left: 81%;
+}
+.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:0vh;overflow:hidden}.slider }
 
 </style>
 </head>
@@ -474,6 +503,12 @@ img{
       </label>
     <!-- </form> -->
   </div>
+  <div class="bloc" id="bloc6">
+    <span class="audTitle">Original Sound File</span>
+  </div>
+  <div class="bloc" id="bloc7">
+    <span class="audTitle">Denoised Sound File</span>
+  </div>
   <div id="card">
     <div class="slider" id="bloc1">
      <div class="slider">
@@ -492,10 +527,10 @@ img{
 
 
     </div>
-    <div style="font-size: 2vh; color:black">
-      <span >Original</span> <span style="margin-left:27%">Drag to Compare</span> <span  style="margin-left:29%">Clean<span>
-    </div>
   </div>
+  <div class="bloc" id="sliderTag"><span class="audTitle" style="color: white">Original</span></div>
+    <div class="bloc" id="sliderTag2"><span class="audTitle" style="color: white">Slider</span></div>
+    <div class="bloc" id="sliderTag3"><span class="audTitle" style="color: white">Denoised</span></div>    
 </div>
 </div>
 <!-- <i class="material-icons">add_circle_outline</i>-->
@@ -537,6 +572,7 @@ function play() {
 });
 
 
+// wavesurfer2.load('{{ url_for('static', filename = 'wav/enhanced.wav') }}' );
 wavesurfer2.load('{{ url_for('static', filename = wav_file) }}' );
 
 function play2() {
