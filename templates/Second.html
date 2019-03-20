@@ -4,6 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 <script src="https://unpkg.com/wavesurfer.js"></script>
 <style>
 
@@ -457,7 +458,13 @@ img{
   top: 92%;
   left: 81%;
 }
-.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:0vh;overflow:hidden}.slider }
+
+#sliderTag00{
+  top: 10%;
+  left: 20%;
+}
+
+.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:6px solid #B279C0;margin-right:0vh;overflow:hidden}.slider }
 
 </style>
 </head>
@@ -510,6 +517,7 @@ img{
     <span class="audTitle">Denoised Sound File</span>
   </div>
   <div id="card">
+  <div class="bloc" id="sliderTag00"><span class="audTitle" style="font-family: 'Fjalla One', sans-serif;font-size: 5vh;color: white">Spectrogram Comparison</span></div>
     <div class="slider" id="bloc1">
      <div class="slider">
 
@@ -528,9 +536,9 @@ img{
 
     </div>
   </div>
-  <div class="bloc" id="sliderTag"><span class="audTitle" style="color: white">Original</span></div>
-    <div class="bloc" id="sliderTag2"><span class="audTitle" style="color: white">Slider</span></div>
-    <div class="bloc" id="sliderTag3"><span class="audTitle" style="color: white">Denoised</span></div>    
+  <div class="bloc" id="sliderTag"><span class="audTitle" style="font-size: 2.1vh;color: white">Original</span></div>
+    <div class="bloc" id="sliderTag2"><span class="audTitle" style="font-size: 2.1vh;color: white">Slider</span></div>
+    <div class="bloc" id="sliderTag3"><span class="audTitle" style="font-size: 2.1vh;color: white">Denoised</span></div>    
 </div>
 </div>
 <!-- <i class="material-icons">add_circle_outline</i>-->
