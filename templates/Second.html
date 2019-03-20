@@ -4,6 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet">
 <script src="https://unpkg.com/wavesurfer.js"></script>
 <style>
 
@@ -379,7 +380,7 @@ article p {
 
 #bloc1{
   /*position: absolute;*/
-  width:80vh;
+  width:64vh;
   /*height: 150vh;*/
  /* right: -1%;
   top:30%;*/
@@ -419,16 +420,51 @@ img{
 
 #card{
   position: absolute;
-  right: -4%;
-  top: 20%;
+  right: 2%;
+  top: 18%;
   background-color: #0B353B;
-  padding: 10vh;
-  padding-bottom: 20vh;
-  border-radius:2vh;
+  padding: 7vh;
+  padding-top: 20vh;
+  border-radius:1.8vh;
   box-shadow: 1vh 1vh 3vh #0B353B;
 }
 
-.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:3px solid white;margin-right:-0.9vh;overflow:hidden}.slider }
+.audTitle{
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.5vh;
+}
+
+#bloc6{
+  top: 46%;
+  left: 23%;
+}
+
+#bloc7{
+  top: 74%;
+  left: 23%;
+}
+
+#sliderTag{
+  top: 92%;
+  left: 9%;
+}
+
+#sliderTag2{
+  top: 92%;
+  left: 46%;
+}
+
+#sliderTag3{
+  top: 92%;
+  left: 81%;
+}
+
+#sliderTag00{
+  top: 10%;
+  left: 20%;
+}
+
+.slider{width:100%;height:auto;padding:0;position:relative}.slider .right.image{position:absolute;z-index:1;top:0;left:0}.slider .left.image{position:relative;z-index:2;border-right:6px solid #B279C0;margin-right:0vh;overflow:hidden}.slider }
 
 </style>
 </head>
@@ -474,7 +510,14 @@ img{
       </label>
     <!-- </form> -->
   </div>
+  <div class="bloc" id="bloc6">
+    <span class="audTitle">Original Sound File</span>
+  </div>
+  <div class="bloc" id="bloc7">
+    <span class="audTitle">Denoised Sound File</span>
+  </div>
   <div id="card">
+  <div class="bloc" id="sliderTag00"><span class="audTitle" style="font-family: 'Fjalla One', sans-serif;font-size: 5vh;color: white">Spectrogram Comparison</span></div>
     <div class="slider" id="bloc1">
      <div class="slider">
 
@@ -492,10 +535,10 @@ img{
 
 
     </div>
-    <div style="font-size: 2vh; color:black">
-      <span >Original</span> <span style="margin-left:27%">Drag to Compare</span> <span  style="margin-left:29%">Clean<span>
-    </div>
   </div>
+  <div class="bloc" id="sliderTag"><span class="audTitle" style="font-size: 2.1vh;color: white">Original</span></div>
+    <div class="bloc" id="sliderTag2"><span class="audTitle" style="font-size: 2.1vh;color: white">Slider</span></div>
+    <div class="bloc" id="sliderTag3"><span class="audTitle" style="font-size: 2.1vh;color: white">Denoised</span></div>    
 </div>
 </div>
 <!-- <i class="material-icons">add_circle_outline</i>-->
@@ -537,6 +580,7 @@ function play() {
 });
 
 
+// wavesurfer2.load('{{ url_for('static', filename = 'wav/enhanced.wav') }}' );
 wavesurfer2.load('{{ url_for('static', filename = wav_file) }}' );
 
 function play2() {
@@ -552,7 +596,7 @@ function play2() {
 
 
 <!-- Change the button background -->
-<span class="buttons" onclick="location.href='http://127.0.0.1:5000/classify'" onMouseOver="this.style.background='#D0C7D4'" onMouseOut="this.style.background='#ffff'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 80%; left: 40%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:black; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value = Upload>Classify</span>
+<span class="buttons" onclick="location.href='http://127.0.0.1:5000/classify'" onMouseOver="this.style.background='#11525C'" onMouseOut="this.style.background='#0B353B'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 85%; left: 43%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:#0B353B; font-size: 2.3vh;text-align:center; width:10vh; display:inline-block; margin: 2.5vh; padding: 2.5vh;color: white " type=submit value = Upload>Classify</span>
 
 <!-- </form> -->
 </label>
