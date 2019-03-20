@@ -450,10 +450,6 @@ img{
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-3-2">Classification</label>
       </div>
-      <input class="stepper__input" id="stepper-3-3" name="stepper-3" type="radio"/>
-      <div class="stepper__step">
-        <label class="stepper__button" for="stepper-3-3">Results</label>
-      </div>
     </div>
   </li>
 </ul>
@@ -484,13 +480,13 @@ img{
 
       <div class="left image">
 
-        <img src= "{{ url_for('static', filename = 'images/original_spectogram.png') }}" />
+        <img src= "{{ url_for('static', filename = 'images/original_spectogram_html.png') }}" />
 
       </div>
 
       <div class="right image">
 
-        <img src="{{ url_for('static', filename = 'images/enhanced_spectogram.png') }}"/>
+        <img src="{{ url_for('static', filename = 'images/enhanced_spectogram_html.png') }}"/>
 
       </div>
 
@@ -549,5 +545,17 @@ function play2() {
 
 
 </script>
+
+<label >
+
+<input style="margin:50px 0px 0px 0px;display: none;" >
+
+
+<!-- Change the button background -->
+<span class="buttons" onclick="location.href='http://127.0.0.1:5000/classify'" onMouseOver="this.style.background='#D0C7D4'" onMouseOut="this.style.background='#ffff'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 80%; left: 40%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:black; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value = Upload>Classify</span>
+
+<!-- </form> -->
+</label>
+
 </body>
 </html>

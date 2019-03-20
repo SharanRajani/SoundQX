@@ -1,21 +1,18 @@
-from keras.models import Sequential, load_model
-from keras.layers.core import Dense, Dropout, Activation,Flatten
-from keras.layers.recurrent import LSTM, GRU, SimpleRNN
-from keras.layers.convolutional import Convolution2D, Convolution1D, MaxPooling2D, MaxPooling1D, AveragePooling2D
-from keras.layers.normalization import BatchNormalization
-from keras.layers.advanced_activations import ELU, PReLU, LeakyReLU
-from keras.layers.wrappers import TimeDistributed
-from keras.optimizers import SGD, Adagrad, RMSprop
-from keras.callbacks import Callback, ModelCheckpoint, EarlyStopping
+print("beginning")
+from keras.models import load_model
 from keras.utils.io_utils import HDF5Matrix
 from scipy import signal
-import scipy.io
+import scipy
 import scipy.io.wavfile as wav
 import numpy as np
 import h5py
 import librosa
 import sys
 import os
+
+model = load_model("model.hdf5")
+
+print("IM HERE")
 
 def make_spectrum_phase(y, FRAMESIZE, OVERLAP, FFTSIZE):
     D=librosa.stft(y,n_fft=FRAMESIZE,hop_length=OVERLAP,win_length=FFTSIZE,window=scipy.signal.hamming)
@@ -39,8 +36,9 @@ def recons_spec_phase(Sxx_r, phase):
 
 
 
-def predict(modelpath, noisylistpath):
-	model=load_model(modelpath) #"weights/DNN_spec_20160425v2.hdf5"
+def predict(noisylistpath):
+	# model = load_model("model.hdf5")
+	# model=model #"weights/DNN_spec_20160425v2.hdf5"
 	FRAMESIZE = 512
 	OVERLAP = 256
 	FFTSIZE = 512
