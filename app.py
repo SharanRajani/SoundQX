@@ -19,7 +19,7 @@ def home():
 	if request.method == 'POST':
 		f = request.files['file']
 		print(f.filename)
-		f.save('./static/wav/'+secure_filename(f.filename))
+		f.save('./static/wav/' + secure_filename(f.filename))
 		f = 'wav/'+f.filename
 		session['filepath'] = './static/' + f
 	return render_template('First.html', wav_file = f)
@@ -44,7 +44,8 @@ def display_spec():
 	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram_html.png", "PuBuGn")
 	spec_plot.plotstft(filepath, "./static/images/original_spectogram_html.png", "PuBuGn")
 	filepath=filepath[9:]
-	return render_template('Second.html', wav_file = filepath)
+	enhancedpath = enhancedpath[7:]
+	return render_template('Second.html', wav_file = filepath, wav_file_enhance = enhancedpath)
 
 @app.route('/classify')
 def classify():
