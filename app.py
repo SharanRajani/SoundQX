@@ -12,22 +12,27 @@ import cnn_testing
 app = Flask(__name__)
 app.secret_key = "my precious"
 
+session_filepath = ""
+
 @app.route('/', methods = ['GET', 'POST'])
 def home():
-	session['filepath']=None
+	# session['filepath']=None
 	f = 'wav/landing_page.wav'
 	if request.method == 'POST':
 		f = request.files['file']
 		print(f.filename)
 		f.save('./static/wav/' + secure_filename(f.filename))
 		f = 'wav/'+f.filename
-		session['filepath'] = './static/' + f
+		# session['filepath'] = './static/' + f
+		global session_filepath
+		session_filepath = './static/' + f
 	return render_template('First.html', wav_file = f)
 
 
 @app.route('/display_spec')
 def display_spec():
-	filepath = session['filepath']
+	filepath = session_filepath
+	# filepath = session['filepath']
 	# modelpath = "model.hdf5"
 	with open("./static/wav/temp", "w") as file:
 			file.write(filepath)
