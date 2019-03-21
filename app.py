@@ -73,4 +73,4 @@ def classify():
 	return render_template('Third.html', pred_label = pred_label, pred_desc = pred_desc, pred_img_path = pred_img_path)
 
 if __name__ == '__main__':
-	app.run(debug=True, use_reloader=False)
+	app.run(debug=True, use_reloader=True)

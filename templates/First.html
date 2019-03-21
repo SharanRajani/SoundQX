@@ -4,7 +4,6 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Raleway:600" rel="stylesheet">
 <script src="https://unpkg.com/wavesurfer.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pizzicato/0.6.4/Pizzicato.js"></script>
 <style>
 
 <div class="s-stepper">
@@ -185,7 +184,7 @@
 }*/
 
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;;
   margin: 0;
   padding: 0;
   background: var(--c-background);
@@ -379,25 +378,17 @@ button{
 <script type="text/javascript">
 	var wavesurfer = WaveSurfer.create({
     container: '#bloc2',
-    waveColor: '#548194',
+    waveColor: '#4E788A',
     progressColor: '#B279C0',
-    // barWidth: 4,
     // barGap:1,
-    // barHeight:11
-    // height:600
+    barHeight:6
 });
 
 
 wavesurfer.load('{{ url_for('static', filename = wav_file) }}' );
 
 function play() {
-    // var audio = new Audio('{{ url_for('static', filename = wav_file) }}');
-    // audio.play()
     wavesurfer.play();
-    // var acousticGuitar = new Pizzicato.Sound('{{ url_for('static', filename = wav_file) }}', function() {
-    // acousticGuitar.play();
-    // console.log("Played")
-// });
 }
 
 wavesurfer.on('ready', function () {
