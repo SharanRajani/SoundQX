@@ -17,7 +17,7 @@ session_filepath = ""
 @app.route('/', methods = ['GET', 'POST'])
 def home():
 	# session['filepath']=None
-	f = 'wav/landing_page.wav'
+	f = 'wav/chunk334.wav'
 	if request.method == 'POST':
 		f = request.files['file']
 		print(f.filename)
@@ -54,7 +54,7 @@ def display_spec():
 
 @app.route('/classify')
 def classify():
-	filename = "./static/images/enhanced_spectogram.png"
+	filename = "./static/images/original_spectogram.png"
 	pred = cnn_testing.predict(filename)
 	pred = pred[0][1]
 

@@ -388,10 +388,12 @@ button{
 wavesurfer.load('{{ url_for('static', filename = wav_file) }}' );
 
 function play() {
+  wavesurfer.setMute(false);
     wavesurfer.play();
 }
 
 wavesurfer.on('ready', function () {
+  wavesurfer.setMute(true);
     wavesurfer.play();
 });
 </script>
