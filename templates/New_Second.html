@@ -239,159 +239,7 @@ article p {
 
 .material-icons.md-48 { font-size: 84px;color:white ; }
 
-#main{
-  /*background-image: linear-gradient(#041214,#2099AB);*/
-		position:fixed;
-		padding:0;
-		margin:0;
 
-		top:0;
-		left:0;
-
-		width: 100%;
-		height: 100%;
-    /*background-color: #CEE5FF;*/
-}
-.bloc{
-	position: absolute;
-}
-
-#blocSpec1{
-
-     margin:0 0 0 30%;
-     width: 80vh;
-}
-
-#bloc11{
-	width: 100%;
-	padding-bottom: 20vh;
-}
-
-#bloc1{
-  position: absolute;
-  width:75vh;
-  /*height: 150vh;*/
-  right: 23%;
-  top:25%;
-}
-
-img{
-  height: 50vh;
-}
-
-.footer{
-	bottom: 0vh;
-	left: 25vh;
-	width: 100%;
-}
-.u-imgResponsive {
-  max-width: 100%;
-}
-
-.u-btn {
-  flex: 0 0 100%;
-  padding: 14px 20px;
-  border: 0;
-  background: white;
-  border-radius: 5vh;
-  color: black;
-  font-family: 'Raleway', sans-serif;
-  cursor:pointer;
-  font-size: 18px;
-  letter-spacing: 1px;
-  transition: all 0.2s ease;
-  /*box-shadow: 0 15px 40px 0 rgba(41, 118, 223, 0.5);*/
-}
-.u-btn:hover {
-  background:#D0C7D4;
-}
-.u-btn.u-btn--success {
-  background: #00d000;
-  /*box-shadow: 0 15px 40px 0 rgba(0, 208, 0, 0.5);*/
-}
-
-/* Global
-====================== */
-
-/* Modal
-====================== */
-
-.modal {
-
-  width: 90%;
-  max-width: 530px;
-  margin: 20px;
-  overflow: hidden;
-  box-shadow: 0 60px 80px 0 rgba(0, 0, 0, 0.4);
-
-}
-
-.modal-top {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background: #0B353B;
-  height: 40vh;
-
-}
-
-.modal-icon {
-  display: block;
-  /*max-width: 207px;*/
-  margin: 0 auto 5vh;
-  height: 25vh;
-
-}
-
-.modal-header {
-  color:white;
-  margin-bottom: 10px;
-  font-size: 25.5px;
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.modal-subheader {
-  max-width: 350px;
-  margin: 0 auto;
-  font-size: 19px;
-  line-height: 1.3;
-  letter-spacing: 1.25px;
-  text-align: center;
-  color: #999;
-}
-
-.modal-bottom {
-  display: flex;
-  padding: 15px 55px;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-  background: #0B353B;
-
-}
-
-.modal-btn {
-  margin: 10px auto;
-}
-
-/* Media Queries */
-@media (min-width: 456px) {
-  .modal-top {
-    padding: 69px 0 65px;
-  }
-
-  .modal-bottom {
-    padding: 30px 60px;
-  }
-
-  .modal-btn {
-    flex: 1;
-    margin: 0;
-    max-width: 190px;
-  }
-  .modal-btn:nth-of-type(2) {
-    margin-left: 30px;
-  }
-}
 
 </style>
 </head>
@@ -409,19 +257,19 @@ img{
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-6-1">Denoising Details</label>
       </div>
-    <input class="stepper__input" id="stepper-6-2" name="stepper-6" type="radio" checked="checked"/>
+    <input class="stepper__input" id="stepper-6-2" name="stepper-6" type="radio" />
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-6-2">Spectrogram</label>
       </div>
-    <input class="stepper__input" id="stepper-6-3" name="stepper-6" type="radio" checked="checked"/>
+    <input class="stepper__input" id="stepper-6-3" name="stepper-6" type="radio" />
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-6-3">Classification Details</label>
       </div>
-      <input class="stepper__input" id="stepper-6-4" name="stepper-6" type="radio" checked="checked"/>
+      <input class="stepper__input" id="stepper-6-4" name="stepper-6" type="radio" />
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-6-4">Classification</label>
       </div>
-    <input class="stepper__input" id="stepper-6-5" name="stepper-6" type="radio" checked="checked"/>
+    <input class="stepper__input" id="stepper-6-5" name="stepper-6" type="radio" />
       <div class="stepper__step">
         <label class="stepper__button" for="stepper-6-5">Validation</label>
       </div>
@@ -430,24 +278,19 @@ img{
 </ul>
 </div>
 
-    <div class="bloc" id="bloc1">
+<label >
 
-    <div class="modal modal--congratulations">
-        <div class="modal-top">
-            <img class="modal-icon u-imgResponsive" src={{pred_img_path}} />
+<input style="margin:50px 0px 0px 0px;display: none;" >
 
-            <div class="modal-header">Quality: {{pred_label}}</div>
-            <div class="modal-subheader">{{pred_desc}}</div>
-        </div>
-        <div class="modal-bottom">
+<span class="buttons" onclick="location.href='http://127.0.0.1:5000/display_spec'" onMouseOver="this.style.background='#11525C'" onMouseOut="this.style.background='#0B353B'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 49%; left: 51%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:#0B353B; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh; color: white  " >Denoised Results</span>
 
-            <button class="modal-btn u-btn" onclick="location.href='http://127.0.0.1:5000/display_spec'">Back to Spectrograms</button>
-            <button class="modal-btn u-btn " onclick="location.href='http://127.0.0.1:5000/'">Try another file</button>
-        </div>
-    </div>
+<!-- </form> -->
+</label>
 
 
-  </div>
+
+
+   
 </div>
 <!-- <i class="material-icons">add_circle_outline</i>-->
 <!-- <i class="material-icons md-18">face</i>-->

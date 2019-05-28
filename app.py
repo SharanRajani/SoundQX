@@ -29,6 +29,11 @@ def home():
 	return render_template('First.html', wav_file = f)
 
 
+@app.route('/denoise_details', methods = ['GET', 'POST'])
+def denoise_details():
+	return render_template('New_Second.html')
+
+
 @app.route('/display_spec')
 def display_spec():
 	filepath = session_filepath

@@ -307,17 +307,29 @@ button{
 	<ul class="container">
   <li class="container__item">
     <div class="stepper" data-debug="data-debug">
-      <input class="stepper__input" id="stepper-3-0" name="stepper-3" type="radio" checked="checked"/>
+      <input class="stepper__input" id="stepper-6-0" name="stepper-3" type="radio" checked="checked"/>
       <div class="stepper__step">
-        <label class="stepper__button" for="stepper-3-0">Choose file</label>
+        <label class="stepper__button" for="stepper-6-0">Choose file</label>
       </div>
-      <input class="stepper__input" id="stepper-3-1" name="stepper-3" type="radio"/>
+      <input class="stepper__input" id="stepper-6-1" name="stepper-3" type="radio"/>
       <div class="stepper__step">
-        <label class="stepper__button" for="stepper-3-1">Spectrogram</label>
+        <label class="stepper__button" for="stepper-6-1">Denoising Details</label>
       </div>
-      <input class="stepper__input" id="stepper-3-2" name="stepper-3" type="radio"/>
+    <input class="stepper__input" id="stepper-6-1" name="stepper-3" type="radio"/>
       <div class="stepper__step">
-        <label class="stepper__button" for="stepper-3-2">Classification</label>
+        <label class="stepper__button" for="stepper-6-1">Spectrogram</label>
+      </div>
+    <input class="stepper__input" id="stepper-6-1" name="stepper-3" type="radio"/>
+      <div class="stepper__step">
+        <label class="stepper__button" for="stepper-6-1">Classification Details</label>
+      </div>
+      <input class="stepper__input" id="stepper-6-2" name="stepper-3" type="radio"/>
+      <div class="stepper__step">
+        <label class="stepper__button" for="stepper-6-2">Classification</label>
+      </div>
+    <input class="stepper__input" id="stepper-6-1" name="stepper-3" type="radio"/>
+      <div class="stepper__step">
+        <label class="stepper__button" for="stepper-6-1">Validation</label>
       </div>
     </div>
   </li>
@@ -347,7 +359,7 @@ button{
 
 <input style="margin:50px 0px 0px 0px;display: none;" >
 
-<span class="buttons" onclick="location.href='http://127.0.0.1:5000/display_spec'" onMouseOver="this.style.background='#D0C7D4'" onMouseOut="this.style.background='#ffff'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 49%; left: 51%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value = Upload>Denoise</span>
+<span class="buttons" onclick="location.href='http://127.0.0.1:5000/denoise_details'" onMouseOver="this.style.background='#D0C7D4'" onMouseOut="this.style.background='#ffff'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 49%; left: 51%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:white; font-size: 2vh;text-align:center; width:10vh; display:inline-block; margin: 2vh; padding: 2vh;  " type=submit value = Upload>Denoise</span>
 
 <!-- </form> -->
 </label>
