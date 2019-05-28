@@ -11,4 +11,4 @@ def makegraph(y):
 	plt.xlabel("Time Stamps(44.1k/sec)")
 	plt.ylabel("Amplitude")
 	plt.plot(y, c = "#548194")
-	plt.savefig("AmpVsTime")
+	plt.savefig("./static/images/AmpVsTime.png")
