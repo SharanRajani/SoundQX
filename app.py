@@ -60,6 +60,10 @@ def display_spec():
 	enhancedpath = enhancedpath[7:]
 	return render_template('Second.html', wav_file = filepath, wav_file_enhance = enhancedpath)
 
+@app.route('/classify_details', methods = ['GET', 'POST'])
+def classify_details():
+	return render_template('New_Third.html')
+
 @app.route('/classify')
 def classify():
 	filename = "./static/images/original_spectogram.png"
