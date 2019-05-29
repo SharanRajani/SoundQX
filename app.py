@@ -41,12 +41,13 @@ def denoise_details():
 @app.route('/display_spec')
 def display_spec():
     filepath = session_filepath
+    modelpath = "model.hdf5"
     with open("./static/wav/temp", "w") as file:
         file.write(filepath)
     file.close()
     mixpath = "./static/wav/temp"
     global enhancedpath
-    enhancedpath = test_gen_spec.predict(mixpath)
+    enhancedpath = test_gen_spec.predict(modelpath, mixpath)
     spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png", "jet" )
     spec_plot.plotstft(filepath, "./static/images/original_spectogram.png", "jet")
     spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram_html.png", "PuBuGn")
