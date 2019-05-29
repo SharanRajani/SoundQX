@@ -8,6 +8,7 @@ import numpy as np
 import scipy.io.wavfile as wav
 import librosa
 import cnn_testing
+import createAmpGraph
 
 app = Flask(__name__)
 app.secret_key = "my precious"
@@ -32,7 +33,9 @@ def home():
 
 @app.route('/denoise_details', methods = ['GET', 'POST'])
 def denoise_details():
-	return render_template('New_Second.html')
+	sample_rate, wav_data = wav.read(session_filepath)
+	createAmpGraph.makegraph(wav_data)
+	return render_template('New_Second.html',sample_rate=sample_rate,wav_data=wav_data)
 
 
 @app.route('/display_spec')
