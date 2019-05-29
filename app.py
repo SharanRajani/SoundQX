@@ -12,6 +12,7 @@ import createAmpGraph
 
 app = Flask(__name__)
 app.secret_key = "my precious"
+enhancedpath = ""
 
 session_filepath = ""
 
@@ -39,26 +40,20 @@ def denoise_details():
 
 @app.route('/display_spec')
 def display_spec():
-	filepath = session_filepath
-	# filepath = session['filepath']
-	# modelpath = "model.hdf5"
-	with open("./static/wav/temp", "w") as file:
-			file.write(filepath)
-
-	file.close()
-
-	mixpath = "./static/wav/temp"
-
-	enhancedpath = test_gen_spec.predict(mixpath)
-
-	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png", "jet" )
-	spec_plot.plotstft(filepath, "./static/images/original_spectogram.png", "jet")
-
-	spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram_html.png", "PuBuGn")
-	spec_plot.plotstft(filepath, "./static/images/original_spectogram_html.png", "PuBuGn")
-	filepath=filepath[9:]
-	enhancedpath = enhancedpath[7:]
-	return render_template('Second.html', wav_file = filepath, wav_file_enhance = enhancedpath)
+    filepath = session_filepath
+    with open("./static/wav/temp", "w") as file:
+        file.write(filepath)
+    file.close()
+    mixpath = "./static/wav/temp"
+    global enhancedpath
+    enhancedpath = test_gen_spec.predict(mixpath)
+    spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram.png", "jet" )
+    spec_plot.plotstft(filepath, "./static/images/original_spectogram.png", "jet")
+    spec_plot.plotstft(enhancedpath, "./static/images/enhanced_spectogram_html.png", "PuBuGn")
+    spec_plot.plotstft(filepath, "./static/images/original_spectogram_html.png", "PuBuGn")
+    filepath=filepath[9:]
+    enhancedpath = enhancedpath[7:]
+    return render_template('Second.html', wav_file = filepath, wav_file_enhance = enhancedpath)
 
 @app.route('/classify_details', methods = ['GET', 'POST'])
 def classify_details():
@@ -83,6 +78,13 @@ def classify():
 		pred_desc = "There is room for improvement. Please ensure weld quality does not deteriorate any further."
 		pred_img_path = "./static/images/neutral_result.png"
 	return render_template('Third.html', pred_label = pred_label, pred_desc = pred_desc, pred_img_path = pred_img_path)
+
+@app.route('/validate', methods = ['GET', 'POST'])
+def validate():
+    filepath = session_filepath
+    print(filepath)
+    print(enhancedpath)
+    return render_template('Sixth.html', wav_file = enhancedpath)
 
 if __name__ == '__main__':
 	app.run(debug=True, use_reloader=True)
