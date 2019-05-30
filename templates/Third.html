@@ -386,10 +386,19 @@ img{
   .modal-btn {
     flex: 1;
     margin: 0;
-    max-width: 190px;
+    max-width: 170px;
+  }
+  .modal-btn:nth-of-type(1) {
+    margin-left: -33px;
   }
   .modal-btn:nth-of-type(2) {
-    margin-left: 30px;
+    margin-left: 15px;
+    width: 250px;
+  }
+  .modal-btn:nth-of-type(3) {
+    margin-left: 15px;
+    margin-right: -33px;
+    width: 160px;
   }
 }
 
@@ -443,7 +452,8 @@ img{
 
             <button class="modal-btn u-btn" onclick="location.href='http://127.0.0.1:5000/display_spec'">Back to Spectrograms</button>
             <button class="modal-btn u-btn " onclick="location.href='http://127.0.0.1:5000/'">Try another file</button>
-<button class="modal-btn u-btn" onclick="location.href='http://127.0.0.1:5000/validate'">Validate Results</button>
+             <!-- <span style={bgcolor="white"}/>aadfsdgsdgsda</span>  --> 
+            <button class="modal-btn u-btn" onclick="location.href='http://127.0.0.1:5000/validate'">Validate Results</button>
         </div>
     </div>
 
