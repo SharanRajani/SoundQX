@@ -409,9 +409,9 @@ img{
 }
 
 #bloc10{
-  right: 50%;
-  left: 40%;
-  top:48%;
+  /*right: 50%;*/
+  left: 68%;
+  top:31%;
 }
 
 #bloc4{
@@ -552,7 +552,7 @@ var wavesurfer = WaveSurfer.create({
 });
 
 
-wavesurfer.load("./static/wav/bad_input.wav");
+wavesurfer.load("./static/wav/Bad_input.wav");
 
 function play() {
     wavesurfer.play();
@@ -568,14 +568,14 @@ var wavesurfer2 = WaveSurfer.create({
 });
 
 
-wavesurfer2.load("./static/wav/bad_input.wav" );
+wavesurfer2.load("./static/wav/Good_input.wav");
 
 
 function play2() {
     wavesurfer2.play();
 }
 
-  var wavesurfer3 = WaveSurfer.create({
+var wavesurfer3 = WaveSurfer.create({
     container: '#bloc10',
     waveColor: '#548194',
     progressColor: '#B279C0',
@@ -585,26 +585,14 @@ function play2() {
 });
 
 
-wavesurfer3.load('{{ url_for('static', filename = 'wav/enhanced.wav') }}' );
-/*wavesurfer2.load('{{ url_for('static', filename = wav_file) }}' );*/
+wavesurfer3.load("./static/wav/enhanced.wav" );
+
 
 function play3() {
     wavesurfer3.play();
 }
 
-
 </script>
-
-<label >
-
-<input style="margin:50px 0px 0px 0px;display: none;" >
-
-
-<!-- Change the button background -->
-<span class="buttons" onclick="location.href='http://127.0.0.1:5000/classify_details'" onMouseOver="this.style.background='#11525C'" onMouseOut="this.style.background='#0B353B'"  style="font-family: 'Raleway', sans-serif; cursor: pointer; position: absolute; top: 85%; left: 43%;border-radius:4vh;  text-decoration:none; border-radius:4vh; background-color:#0B353B; font-size: 2.3vh;text-align:center; width:10vh; display:inline-block; margin: 2.5vh; padding: 2.5vh;color: white " type=submit value = Upload>Classify</span>
-
-<!-- </form> -->
-</label>
 
 </body>
 </html>

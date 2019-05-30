@@ -57,7 +57,9 @@ def display_spec():
 
 @app.route('/classify_details', methods = ['GET', 'POST'])
 def classify_details():
-	return render_template('New_Third.html')
+	sample_rate, wav_data = wav.read("./static/wav/enhanced.wav")
+	createAmpGraph.makegraph1(wav_data)
+	return render_template('New_Third.html',sample_rate=sample_rate,wav_data=wav_data)
 
 @app.route('/classify')
 def classify():
