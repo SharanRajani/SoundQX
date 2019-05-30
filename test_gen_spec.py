@@ -9,8 +9,7 @@ from keras.optimizers import SGD, Adagrad, RMSprop
 from keras.callbacks import Callback, ModelCheckpoint, EarlyStopping
 from keras.utils.io_utils import HDF5Matrix
 from scipy import signal
-from keras import backend as K
-import scipy
+import scipy.io
 import scipy.io.wavfile as wav
 import numpy as np
 import h5py
@@ -18,20 +17,15 @@ import librosa
 import sys
 import os
 
-model = load_model("model.hdf5")
-
-
-print("IM HERE")
-
 def make_spectrum_phase(y, FRAMESIZE, OVERLAP, FFTSIZE):
     D=librosa.stft(y,n_fft=FRAMESIZE,hop_length=OVERLAP,win_length=FFTSIZE,window=scipy.signal.hamming)
-    Sxx = np.log10(abs(D)**2)
+    Sxx = np.log10(abs(D)**2) 
     print(str(D) + " the value for D")
     phase = np.exp(1j * np.angle(D))
     print(str(phase) + " the value of phase")
     mean = np.mean(Sxx, axis=1).reshape((257,1))
     std = np.std(Sxx, axis=1).reshape((257,1))+1e-12
-    Sxx = (Sxx-mean)/std
+    Sxx = (Sxx-mean)/std  
     return Sxx, phase, mean, std
 
 def recons_spec_phase(Sxx_r, phase):
@@ -45,20 +39,18 @@ def recons_spec_phase(Sxx_r, phase):
 
 
 
-def predict(noisylistpath):
-    K.clear_session()
-    model = load_model("model.hdf5")
-	# model=model #"weights/DNN_spec_20160425v2.hdf5"
-    FRAMESIZE = 512
-    OVERLAP = 256
-    FFTSIZE = 512
-    RATE = 16000
-    FRAMEWIDTH = 2
-    FBIN = FRAMESIZE//2+1
+def predict(modelpath, noisylistpath):
+	model=load_model(modelpath) #"weights/DNN_spec_20160425v2.hdf5"
+	FRAMESIZE = 512
+	OVERLAP = 256
+	FFTSIZE = 512
+	RATE = 16000
+	FRAMEWIDTH = 2
+	FBIN = FRAMESIZE//2+1
 	# noisylistpath = sys.argv[2]
-    noisylistpath = noisylistpath
+	noisylistpath = noisylistpath
 
-    with open(noisylistpath, 'r') as f:
+	with open(noisylistpath, 'r') as f:
 	    for line in f:
 	        print(line)
 	        filename = line.split('/')[-1][:]
@@ -67,7 +59,7 @@ def predict(noisylistpath):
 	        training_data = np.empty((10000, FBIN, FRAMEWIDTH*2+1)) # For Noisy data
 
 	        Sxx, phase, mean, std = make_spectrum_phase(y, FRAMESIZE, OVERLAP, FFTSIZE)
-	        idx = 0
+	        idx = 0     
 	        for i in range(FRAMEWIDTH, Sxx.shape[1]-FRAMEWIDTH): # 5 Frmae
 	            training_data[idx,:,:] = Sxx[:,i-FRAMEWIDTH:i+FRAMEWIDTH+1] # For Noisy data
 	            idx = idx + 1
@@ -81,9 +73,12 @@ def predict(noisylistpath):
 	            count+=1
 	        # # The un-enhanced part of spec should be un-normalized
 	        Sxx[:, :FRAMEWIDTH] = (Sxx[:, :FRAMEWIDTH] * std) + mean
-	        Sxx[:, -FRAMEWIDTH:] = (Sxx[:, -FRAMEWIDTH:] * std) + mean
+	        Sxx[:, -FRAMEWIDTH:] = (Sxx[:, -FRAMEWIDTH:] * std) + mean    
 
 	        recons_y = recons_spec_phase(Sxx, phase)
 	        output = librosa.util.fix_length(recons_y, y.shape[0])
 	        wav.write("static/wav/enhanced.wav",RATE,np.int16(output*32767))
 	        return os.path.join("static","wav","enhanced.wav")
+
+
+
